@@ -1,8 +1,8 @@
 ---
 - name: "SETUP | Update repositories cache and install scoring_engine dependencies"
-  apt:
+  package:
     name: "{{ item }}"
-    update_cache: yes
+    state: latest
   with_items:
     - build-essential
     - git

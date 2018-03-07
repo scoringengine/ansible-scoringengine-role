@@ -3,4 +3,4 @@
   connection: local
   become: true
   roles:
-    - { role: ../roles/ansible-scoringengine-role }
+    - { role: ../../roles/ansible-scoringengine-role }

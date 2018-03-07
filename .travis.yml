@@ -1,10 +1,6 @@
 ---
 language: python
-python:
-#  - '2.7'
-#  - '3.4'
-  - '3.5'
-#  - '3.6'
+python: "2.7"
 
 # Doc: https://docs.travis-ci.com/user/customizing-the-build#Build-Matrix
 env:

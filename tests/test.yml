@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
-  connection: local
+- hosts: all
+  remote_user: root
   roles:
-    - { role: ../ }
+    - ../../ansible-scoringengine-role

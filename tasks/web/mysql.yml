@@ -11,9 +11,17 @@
 
 - name: "WEB | MYSQL | Configure MySQL to listen on 0.0.0.0"
   lineinfile:
+    path: /etc/mysql/mariadb.conf.d/50-server.cnf
+    regexp: 'bind-address'
+    line: 'bind-address = 0.0.0.0'
+  when: ansible_distribution == "Debian"
+
+- name: "WEB | MYSQL | Configure MySQL to listen on 0.0.0.0"
+  lineinfile:
     path: /etc/mysql/mysql.conf.d/mysqld.cnf
     regexp: 'bind-address'
     line: 'bind-address = 0.0.0.0'
+  when: ansible_distribution == "Ubuntu"
 
 - name: "WEB | MYSQL | Restart MySQL"
   service:

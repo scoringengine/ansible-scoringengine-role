@@ -1,5 +1,9 @@
 ---
-- include: setup.yml
+- include: debian/setup.yml
+  when: ansible_distribution == "Debian"
+
+- include: ubuntu/setup.yml
+  when: ansible_distribution == "Ubuntu"
 
 # Web
 - include: web/mysql.yml

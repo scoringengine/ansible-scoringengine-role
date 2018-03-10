@@ -6,10 +6,12 @@
   with_items:
     - apt-transport-https
     - build-essential
+    - default-libmysqlclient-dev
     - git
-    - libmysqlclient-dev
     - python3.5
     - python3.5-dev
+    # Necessary to allow ansible to configure scoring_engine database
+    - python-mysqldb
     - wget
 
 - name: "SETUP | Create engine user"
@@ -61,7 +63,7 @@
   file:
     path: /var/log/scoring_engine
     state: directory
-    owner: syslog
+    owner: root
     group: adm
     mode: 0755
 

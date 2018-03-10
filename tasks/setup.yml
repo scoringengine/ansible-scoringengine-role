@@ -4,6 +4,7 @@
     name: "{{ item }}"
     state: latest
   with_items:
+    - apt-transport-https
     - build-essential
     - git
     - libmysqlclient-dev

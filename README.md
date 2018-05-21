@@ -1,4 +1,4 @@
-ansible-scoringengine-role [![Build Status](https://travis-ci.org/RustyBower/ansible-scoringengine-role.svg?branch=master)](https://travis-ci.org/RustyBower/ansible-scoringengine-role)
+ansible-scoringengine-role [![Build Status](https://travis-ci.org/scoringengine/ansible-scoringengine-role.svg?branch=master)](https://travis-ci.org/RustyBower/ansible-scoringengine-role)
 =========
 
 An Ansible role that installs scoring_engine on Ubuntu 16.04 and Debian 9

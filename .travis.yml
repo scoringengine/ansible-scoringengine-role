@@ -20,7 +20,7 @@ script:
   - ansible-playbook --syntax-check --list-tasks tests/test.yml --sudo
 
   # Run the role/playbook with ansible-playbook.
-  - ansible-playbook --connection=local -vvvv tests/test.yml --sudo
+  - ansible-playbook --connection=local -vvvv tests/test.yml --sudo  -e 'ansible_python_interpreter=/usr/bin/python3' 
 
   # Run the role/playbook again, checking to make sure it's idempotent.
   - >

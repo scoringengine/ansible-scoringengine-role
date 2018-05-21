@@ -4,9 +4,9 @@ python:
   - "2.7"
   - "3.6"
 
-before_install:
- - sudo apt-get update -qq
- - sudo apt-get install -qq python-apt
+#before_install:
+ #- sudo apt-get update -qq
+ #- sudo apt-get install -qq python-apt
 
 install:
   - python -V
@@ -17,7 +17,7 @@ script:
   - ansible-lint tasks/main.yml
 
   # Check the role/playbook's syntax.
-  - ansible-playbook --syntax-check --list-tasks tests/test.yml --sudo
+  - ansible-playbook --syntax-check --list-tasks tests/test.yml
 
   # Run the role/playbook with ansible-playbook.
   - ansible-playbook --connection=local -vvvv tests/test.yml --sudo  -e 'ansible_python_interpreter=/usr/bin/python3'

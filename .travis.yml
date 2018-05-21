@@ -4,33 +4,25 @@ python:
   - "2.7"
   - "3.6"
 
-#before_install:
- #- sudo apt-get update -qq
- #- sudo apt-get install -qq python-apt
-
 install:
-  - python -V
-  - pip install ansible ansible-lint
-  - ansible --version | grep "python version"
+  #- pip install ansible ansible-lint
+  - pip install ansible
 
 script:
-  - ansible-lint tasks/main.yml
+  #- ansible-lint tasks/main.yml
 
   # Check the role/playbook's syntax.
-  - ansible-playbook --syntax-check --list-tasks tests/test.yml
+  - ansible-playbook -i tests/inventory tests/test.yml --syntax-check
 
   # Run the role/playbook with ansible-playbook.
-  - ansible-playbook --connection=local -vvvv tests/test.yml --sudo  -e 'ansible_python_interpreter=/usr/bin/python3'
+  - "ansible-playbook -i tests/inventory tests/test.yml --connection=local --sudo"
 
   # Run the role/playbook again, checking to make sure it's idempotent.
   - >
-    ansible-playbook -i tests/inventory tests/test.yml --connection=local --sudo
-    | grep -q 'changed=0.*failed=0'
-    && (echo 'Idempotence test: pass' && exit 0)
-    || (echo 'Idempotence test: fail' && exit 1)
-
-  - netstat -paunt
-  - ps aux | grep python
+  ansible-playbook -i tests/inventory tests/test.yml --connection=local --sudo
+  | grep -q 'changed=0.*failed=0'
+  && (echo 'Idempotence test: pass' && exit 0)
+  || (echo 'Idempotence test: fail' && exit 1)
 
   # Request a page via the web server, to make sure it's running and responds.
   - "curl http://localhost/"

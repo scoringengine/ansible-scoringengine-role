@@ -1,18 +1,16 @@
 ---
-language: python
-sudo: false
-virtualenv:
-  system_site_packages: true
+dist: trusty
+sudo: required
 
-# Install ansible
 addons:
   apt:
     packages:
+    - python
     - python-apt
     - python-pip
 
 install:
-  # Install dependences
+  - python -V
   - pip install ansible ansible-lint
   - ansible --version | grep "python version"
 

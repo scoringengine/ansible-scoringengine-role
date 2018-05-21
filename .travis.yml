@@ -1,13 +1,12 @@
 ---
-dist: trusty
-sudo: required
+language: python
+python:
+  - "2.7"
+  - "3.6"
 
-addons:
-  apt:
-    packages:
-    - python
-    - python-apt
-    - python-pip
+before_install:
+ - sudo apt-get update -qq
+ - sudo apt-get install -qq python-apt
 
 install:
   - python -V

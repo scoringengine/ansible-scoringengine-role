@@ -10,7 +10,7 @@ python:
   #- sudo apt-get install python3
 
 install:
-  - sudo pip install ansible ansible-lint python-apt
+  - pip install ansible ansible-lint python-apt
   - pip freeze
   - dpkg -l
   - ansible --version

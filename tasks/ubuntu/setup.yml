@@ -9,7 +9,7 @@
     - git
     - libmysqlclient-dev
     - python3
-    - python3
+    - python3-dev
     # Necessary to allow ansible to configure scoring_engine database
     - python-mysqldb
     - wget
@@ -25,19 +25,19 @@
     dest: /tmp/get-pip.py
 
 - name: "SETUP | Install pip"
-  shell: python3.5 /tmp/get-pip.py
+  shell: python3 /tmp/get-pip.py
 
 - name: "SETUP | Install virtualenv"
   pip:
     name: virtualenv
-    executable: pip3.5
+    executable: pip3
 
 - name: "SETUP | Configure virtualenv"
-  shell: virtualenv -p /usr/bin/python3.5 /home/engine/scoring_engine/env
+  shell: virtualenv -p /usr/bin/python3 /home/engine/scoring_engine/env
   become: true
   become_user: engine
   args:
-    creates: "/home/engine/scoring_engine/env/bin/python3.5"
+    creates: "/home/engine/scoring_engine/env/bin/python3"
 
 - name: "SETUP | Setup src directory"
   git:
@@ -47,7 +47,7 @@
   become_user: engine
 
 - name: "SETUP | Install scoring_engine python dependencies"
-  shell: /home/engine/scoring_engine/env/bin/pip3.5 install -e /home/engine/scoring_engine/src/
+  shell: /home/engine/scoring_engine/env/bin/pip3 install -e /home/engine/scoring_engine/src/
   become: true
   become_user: engine
 
